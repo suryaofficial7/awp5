@@ -1,0 +1,50 @@
+ <h3></h1>#web form name =  m </h3>
+<pre>
+
+  <%@ Page Language="C#" AutoEventWireup="true" CodeBehind="m.aspx.cs" Inherits="queryBinding.m" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <div>
+            <asp:TextBox ID="TextBox1" runat="server" Text='<%# a %>' Height="125px" TextMode="MultiLine"></asp:TextBox>
+            <asp:TextBox ID="TextBox2" runat="server" OnTextChanged="TextBox2_TextChanged" AutoPostBack="True"></asp:TextBox>
+        </div>
+    </form>
+</body>
+</html>
+
+</pre>
+<hr>
+<pre>
+  using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+
+namespace queryBinding
+{
+    public partial class m : System.Web.UI.Page
+    {
+        public string a;
+        protected void Page_Load(object sender, EventArgs e)
+        {
+            
+
+        }
+
+        protected void TextBox2_TextChanged(object sender, EventArgs e)
+        {
+             a = TextBox2.Text;
+            this.DataBind();
+        }
+    }
+}
+</pre>
