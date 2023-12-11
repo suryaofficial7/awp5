@@ -1,58 +1,40 @@
 <pre>
 
-  using System;
-namespace MultipleInheritance
+using System;
+
+namespace MyApplication
 {
-    class Program
+  interface IFirstInterface
+  {
+    void myMethod(); // interface method
+  }
+
+  interface ISecondInterface
+  {
+    void myOtherMethod(); // interface method
+  }
+
+  // Implement multiple interfaces
+  class DemoClass : IFirstInterface, ISecondInterface
+  {
+    public void myMethod()
     {
-        static void Main(string[] args)
-        {
-            MultipleInheritanceTest obj = new MultipleInheritanceTest();
-            obj.Test();
-            //You cannot call the Show method using obj
-            //obj.Show();
-
-            //Using Interface Reference call the Show method
-            Interface1 i1 = obj;
-            i1.Show();
-
-            //Typecase the object to interface type and call the show method
-            ((Interface2)obj).Show();
-
-            Console.ReadKey();
-        }
+      Console.WriteLine("Some text..");
     }
-
-    public interface Interface1
+    public void myOtherMethod()
     {
-        void Test();
-        void Show();
+      Console.WriteLine("Some other text...");
     }
-    public interface Interface2
+  }
+
+  class Program
+  {
+    static void Main(string[] args)
     {
-        void Test();
-        void Show();
+      DemoClass myObj = new DemoClass();
+      myObj.myMethod();
+      myObj.myOtherMethod();
     }
-
-    public class MultipleInheritanceTest : Interface1, Interface2
-    {
-        //Normal Implementation
-        public void Test()
-        {
-            Console.WriteLine("Test Method is Implemented in Child Class");
-        }
-
-        //Explicit Interface Implementation
-        void Interface1.Show()
-        {
-            Console.WriteLine("Interface1 Show Method is Implemented in Child Class");
-        }
-
-        //Explicit Interface Implementation
-        void Interface2.Show()
-        {
-            Console.WriteLine("Interface2 Show Method is Implemented in Child Class");
-        }
-    }
+  }
 }
 </pre>
